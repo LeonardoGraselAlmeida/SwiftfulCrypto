@@ -18,9 +18,9 @@ final class CoinImageViewModel: ObservableObject {
     private let coinImageService: CoinImageService
     private var cancellables = Set<AnyCancellable>()
     
-    internal init(coin: CoinModel, coinImageService: CoinImageService = CoinImageService()) {
+    internal init(coin: CoinModel, coinImageService: CoinImageService? = nil) {
         self.coin = coin
-        self.coinImageService = coinImageService
+        self.coinImageService = coinImageService ?? CoinImageService(coin: coin)
         addSubscribers()
         getImage()
     }
@@ -36,7 +36,6 @@ final class CoinImageViewModel: ObservableObject {
     }
     
     private func getImage() {
-        let imageURL = coin.image
-        coinImageService.getCoinImage(urlString: imageURL)
+        coinImageService.getCoinImage()
     }
 }
