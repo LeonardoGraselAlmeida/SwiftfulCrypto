@@ -19,9 +19,7 @@ struct HomeView: View {
             
             VStack {
                 homeHeader
-                
                 rowTitles
-                
                 if showPortfolio {
                     portfolioCoinsList
                         .transition(.move(edge: .trailing))
@@ -92,7 +90,7 @@ extension HomeView {
         List {
             ForEach(vm.allCoins) { coin in
                 CoinRowView(coin: coin, showHoldingColumn: false)
-                    .listRowInsets(.init(top: 10, leading: 0, bottom: 10, trailing: 10))
+                    .listRowInsets(.init(top: 12, leading: 0, bottom: 12, trailing: 10))
             }
         }
         .listStyle(.plain)
@@ -102,7 +100,7 @@ extension HomeView {
         List {
             ForEach(vm.portfolioCoins) { coin in
                 CoinRowView(coin: coin, showHoldingColumn: true)
-                    .listRowInsets(.init(top: 10, leading: 0, bottom: 10, trailing: 10))
+                    .listRowInsets(.init(top: 12, leading: 0, bottom: 12, trailing: 10))
             }
         }
         .listStyle(.plain)

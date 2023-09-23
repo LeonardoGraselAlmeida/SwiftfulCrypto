@@ -6,6 +6,7 @@
 //
 
 import Foundation
+import Combine
 
 internal protocol DispatchQueueProtocol {
     
@@ -18,6 +19,8 @@ internal protocol DispatchQueueProtocol {
                     qos: DispatchQoS,
                     flags: DispatchWorkItemFlags,
                     execute work: @escaping @convention(block) () -> Void)
+    
+    func global(qos: DispatchQoS.QoSClass) -> DispatchQueue
     
 }
 
@@ -35,6 +38,10 @@ extension DispatchQueueProtocol {
                              flags: DispatchWorkItemFlags = [],
                              execute work: @escaping @convention(block) () -> Void) {
         asyncAfter(deadline: deadline, qos: qos, flags: flags, execute: work)
+    }
+    
+    internal func global(qos: DispatchQoS.QoSClass = .default) -> DispatchQueue {
+        global(qos: qos)
     }
     
 }

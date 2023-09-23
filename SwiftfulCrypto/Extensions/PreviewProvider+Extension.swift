@@ -17,9 +17,8 @@ extension PreviewProvider {
 final class DeveloperPreview {
     
     static let intance = DeveloperPreview()
-    private init() {
-        
-    }
+    
+    private init() {}
     
     let homeView: HomeViewModel = .init()
     
